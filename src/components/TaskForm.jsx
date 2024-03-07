@@ -4,6 +4,7 @@ export const TaskForm = ({ onCloseAddTask, onAddNewTask }) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [deadline, setDeadline] = useState('')
+  const [status, setStatus] = useState('')
   return (
     <div className="form">
       <div className="form_header">
@@ -25,9 +26,13 @@ export const TaskForm = ({ onCloseAddTask, onAddNewTask }) => {
         placeholder="Enter Task Deadline"
         onChange={(event) => setDeadline(event.target.value)}
       />
+      <input
+        placeholder="Enter Task Status"
+        onChange={(event) => setStatus(event.target.value)}
+      />
       <button
         className="save"
-        onClick={() => onAddNewTask({ name, description, deadline })}
+        onClick={() => onAddNewTask({ name, description, deadline, status })}
       >
         Add Task
       </button>

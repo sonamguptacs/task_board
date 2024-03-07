@@ -91,9 +91,13 @@
   input,
   textarea {
     border-radius: 4px;
+    border: 0;
     height: 40px;
     width: 200px;
     resize: none;
+    &:focus {
+      outline: none;
+    }
   }
 
   .close {

@@ -18,10 +18,9 @@ export const TaskBoardLayout = () => {
     setAddStatus(true)
   }
 
-  const handleAddNewTask = ({ name, description, deadline }) => {
-    console.log({ name })
+  const handleAddNewTask = ({ name, description, deadline, status }) => {
     const list = statusList.map((item) => {
-      if (item.type === 'New') {
+      if (item.type.toLowerCase() === status.toLowerCase()) {
         return {
           ...item,
           taskList: [...item.taskList, { name, description, deadline }],
@@ -31,6 +30,12 @@ export const TaskBoardLayout = () => {
     })
     setStatusList([...list])
     setAddTask(false)
+  }
+
+  const handleAddNewStatus = ({ type, variant }) => {
+    if (!statusList.find((item) => item.type === type))
+      setStatusList([...statusList, { type, variant, taskList: [] }])
+    setAddStatus(false)
   }
 
   return (
@@ -45,7 +50,12 @@ export const TaskBoardLayout = () => {
           onAddNewTask={handleAddNewTask}
         />
       )}
-      {addStatus && <StatusForm />}
+      {addStatus && (
+        <StatusForm
+          onCloseAddStatus={() => setAddStatus(false)}
+          onAddNewStatus={handleAddNewStatus}
+        />
+      )}
     </div>
   )
 }
