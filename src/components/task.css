@@ -55,6 +55,18 @@
   padding: 10px 0;
 }
 
+.name {
+  color: bisque;
+}
+
+.description {
+  height: 100px;
+  padding: 5px 0;
+}
+
+.deadline {
+  text-align: right;
+}
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 800px) {
   .state_column {
