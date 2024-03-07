@@ -6,6 +6,7 @@
 }
 .task_board {
   flex: 1 1 auto;
+  flex-wrap: wrap;
   display: flex;
   gap: 20px;
   padding: 20px 0;
@@ -45,4 +46,18 @@
   height: 150px;
   background-color: #2abccc;
   padding: 10px;
+}
+
+.caption {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 700;
+  padding: 10px 0;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .state_column {
+    flex-direction: column;
+  }
 }
