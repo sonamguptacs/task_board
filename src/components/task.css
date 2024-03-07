@@ -37,4 +37,12 @@
   flex: 1 1 auto;
   height: 100%;
   max-width: 400px;
+  padding: 10px 20px;
+}
+
+.task_card {
+  border-radius: 4px;
+  height: 150px;
+  background-color: #2abccc;
+  padding: 10px;
 }
