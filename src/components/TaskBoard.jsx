@@ -1,11 +1,12 @@
 import React from 'react'
 import { StateColumn } from './StateColumn'
 
-export default function TaskBoard() {
+export default function TaskBoard({ statusList }) {
   return (
     <div className={'task_board'}>
-      <StateColumn type={'New'} variant={'blue'} />
-      <StateColumn type={'In Progress'} variant={'orange'} />
+      {statusList.map(({ type, taskList, variant }) => {
+        return <StateColumn type={type} variant={variant} taskList={taskList} />
+      })}
     </div>
   )
 }

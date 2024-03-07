@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 20px;
+  overflow: hidden;
 }
 .task_board {
   flex: 1 1 auto;
@@ -10,6 +11,7 @@
   display: flex;
   gap: 20px;
   padding: 20px 0;
+  overflow: hidden;
 }
 
 .header {
@@ -38,14 +40,16 @@
   flex: 1 1 auto;
   height: 100%;
   max-width: 400px;
-  padding: 10px 20px;
+  padding: 0 20px;
+  overflow: auto;
 }
 
 .task_card {
   border-radius: 4px;
-  height: 150px;
+  height: 100px;
   background-color: #2abccc;
   padding: 10px;
+  margin: 5px 0;
 }
 
 .caption {
@@ -53,6 +57,9 @@
   text-align: center;
   font-weight: 700;
   padding: 10px 0;
+  position: sticky;
+  top: 0;
+  background-color: #bff0ff;
 }
 
 .name {
@@ -60,12 +67,53 @@
 }
 
 .description {
-  height: 100px;
+  height: 50px;
   padding: 5px 0;
 }
 
 .deadline {
   text-align: right;
+}
+
+.form {
+  border-radius: 4px;
+  position: absolute;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  top: 30%;
+  left: 40%;
+  height: 350px;
+  width: 500px;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  input,
+  textarea {
+    border-radius: 4px;
+    height: 40px;
+    width: 200px;
+    resize: none;
+  }
+
+  .close {
+    border-radius: 4px;
+    background-color: red;
+    border: 0px;
+    float: right;
+    padding: 4px 8px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  .save {
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    border: 0px;
+    float: right;
+    padding: 8px;
+  }
 }
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 800px) {

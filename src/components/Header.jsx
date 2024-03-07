@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const Header=()=> {
+export const Header = ({ onAddNewTask, onAddNewStatus }) => {
   return (
-      <div className={'header'}>
-        <button>Add New Task</button>
-        <button>Add New Status</button>
+    <div className={'header'}>
+      <button onClick={onAddNewTask}>Add New Task</button>
+      <button onClick={onAddNewStatus}>Add New Status</button>
     </div>
   )
 }

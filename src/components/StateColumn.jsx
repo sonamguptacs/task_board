@@ -8,11 +8,9 @@ export const StateColumn = (props) => {
       <div className="caption" style={{ color: props.variant }}>
         {props.type}
       </div>
-      <Task
-        name="Create Layout"
-        description="task is to create layout with a responsive design"
-        deadline="8.3.2022"
-      />
+      {props.taskList.map((taskDetails) => (
+        <Task {...taskDetails} />
+      ))}
     </div>
   )
 }
