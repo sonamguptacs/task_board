@@ -25,6 +25,7 @@ export const TaskForm = ({ onCloseAddTask, onAddNewTask, statusList }) => {
         onChange={(event) => setDescription(event.target.value)}
       />
       <input
+        type="date"
         placeholder="Enter Task Deadline"
         onChange={(event) => setDeadline(event.target.value)}
       />
@@ -43,7 +44,11 @@ export const TaskForm = ({ onCloseAddTask, onAddNewTask, statusList }) => {
       <button
         className="save"
         onClick={() => {
-          if (!name.trim() || status==='Select Task Status' || !status.trim()) {
+          if (
+            !name.trim() ||
+            status === 'Select Task Status' ||
+            !status.trim()
+          ) {
             setError('Task Name/Status missing')
           } else {
             onAddNewTask({ name, description, deadline, status })
