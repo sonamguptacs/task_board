@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const StatusForm = ({ onCloseAddStatus, onAddNewStatus }) => {
+export const StatusForm = ({ onCloseAddStatus, onAddNewStatus,duplicateStatus }) => {
   const [type, setType] = useState('')
   const [variant, setVariant] = useState('')
   const [error, setError] = useState('')
@@ -22,7 +22,7 @@ export const StatusForm = ({ onCloseAddStatus, onAddNewStatus }) => {
         placeholder="Enter Status Color"
         onChange={(event) => setVariant(event.target.value)}
       />
-       <span className="error">{error}</span>
+       <span className="error">{duplicateStatus??error}</span>
       <button
         className="save"
         onClick={() => { if (!type.trim()) { setError('Status Name not entered')} else onAddNewStatus({ type, variant })}}

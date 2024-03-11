@@ -11,6 +11,7 @@ export const TaskBoardLayout = () => {
   const [statusList, setStatusList] = useState([
     { type: 'New', variant: 'Blue', taskList: [] },
   ])
+  const [duplicateStatusError, setDuplicateStatusError] = useState('')
   const handleAddTask = () => {
     setAddTask(true)
   }
@@ -33,9 +34,12 @@ export const TaskBoardLayout = () => {
   }
 
   const handleAddNewStatus = ({ type, variant }) => {
-    if (!statusList.find((item) => item.type === type))
+    const statusExist = statusList.find((item) => item.type.toLowerCase() === type.toLowerCase())
+    setDuplicateStatusError(statusExist?'Status already Exist':'')
+    if (!statusExist) {
       setStatusList([...statusList, { type, variant, taskList: [] }])
-    setAddStatus(false)
+      setAddStatus(false)
+    }
   }
 
   return (
@@ -54,6 +58,7 @@ export const TaskBoardLayout = () => {
         <StatusForm
           onCloseAddStatus={() => setAddStatus(false)}
           onAddNewStatus={handleAddNewStatus}
+          duplicateStatus={duplicateStatusError}
         />
       )}
     </div>
