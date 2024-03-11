@@ -123,7 +123,7 @@
 }
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 800px) {
-  .state_column {
-    flex-direction: column;
+  .layout, .task_board {
+    overflow: auto;
   }
 }
