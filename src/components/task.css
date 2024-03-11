@@ -92,7 +92,8 @@
   align-items: center;
   transition: 1s ease all;
   input,
-  textarea {
+  textarea,
+  select {
     border-radius: 4px;
     border: 0;
     height: 40px;

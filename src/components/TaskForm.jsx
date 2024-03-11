@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const TaskForm = ({ onCloseAddTask, onAddNewTask }) => {
+export const TaskForm = ({ onCloseAddTask, onAddNewTask, statusList }) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [deadline, setDeadline] = useState('')
@@ -28,16 +28,22 @@ export const TaskForm = ({ onCloseAddTask, onAddNewTask }) => {
         placeholder="Enter Task Deadline"
         onChange={(event) => setDeadline(event.target.value)}
       />
-      <input
+      {/* <input
         placeholder="Enter Task Status"
         onChange={(event) => setStatus(event.target.value)}
         required
-      />
+      /> */}
+      <select onChange={(event) => setStatus(event.target.value)}>
+        <option key={''}>Select Task Status</option>
+        {statusList.map((status) => (
+          <option key={status.type}>{status.type}</option>
+        ))}
+      </select>
       <span className="error">{error}</span>
       <button
         className="save"
         onClick={() => {
-          if (!name.trim() || !status.trim()) {
+          if (!name.trim() || status==='Select Task Status' || !status.trim()) {
             setError('Task Name/Status missing')
           } else {
             onAddNewTask({ name, description, deadline, status })

@@ -52,6 +52,7 @@ export const TaskBoardLayout = () => {
             setAddTask(false)
           }}
           onAddNewTask={handleAddNewTask}
+          statusList={statusList}
         />
       )}
       {addStatus && (
