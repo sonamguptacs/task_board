@@ -81,10 +81,11 @@
   background-color: #bcb;
   display: flex;
   flex-direction: column;
-  top: 30%;
-  left: 40%;
-  height: 350px;
-  width: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 70%;
   gap: 10px;
   justify-content: center;
   align-items: center;
