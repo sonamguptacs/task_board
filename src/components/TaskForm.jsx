@@ -5,6 +5,7 @@ export const TaskForm = ({ onCloseAddTask, onAddNewTask }) => {
   const [description, setDescription] = useState('')
   const [deadline, setDeadline] = useState('')
   const [status, setStatus] = useState('')
+  const [error, setError] = useState('')
   return (
     <div className="form">
       <div className="form_header">
@@ -17,6 +18,7 @@ export const TaskForm = ({ onCloseAddTask, onAddNewTask }) => {
       <input
         placeholder="Enter Task Name"
         onChange={(event) => setName(event.target.value)}
+        required
       />
       <textarea
         placeholder="Enter Task Description"
@@ -29,10 +31,18 @@ export const TaskForm = ({ onCloseAddTask, onAddNewTask }) => {
       <input
         placeholder="Enter Task Status"
         onChange={(event) => setStatus(event.target.value)}
+        required
       />
+      <span className="error">{error}</span>
       <button
         className="save"
-        onClick={() => onAddNewTask({ name, description, deadline, status })}
+        onClick={() => {
+          if (!name.trim() || !status.trim()) {
+            setError('Task Name/Status missing')
+          } else {
+            onAddNewTask({ name, description, deadline, status })
+          }
+        }}
       >
         Add Task
       </button>

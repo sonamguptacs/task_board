@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 export const StatusForm = ({ onCloseAddStatus, onAddNewStatus }) => {
   const [type, setType] = useState('')
   const [variant, setVariant] = useState('')
+  const [error, setError] = useState('')
   return (
     <div className="form">
       <div className="form_header">
@@ -15,14 +16,16 @@ export const StatusForm = ({ onCloseAddStatus, onAddNewStatus }) => {
       <input
         placeholder="Enter Status Name"
         onChange={(event) => setType(event.target.value)}
+        required
       />
       <input
         placeholder="Enter Status Color"
         onChange={(event) => setVariant(event.target.value)}
       />
+       <span className="error">{error}</span>
       <button
         className="save"
-        onClick={() => onAddNewStatus({ type, variant })}
+        onClick={() => { if (!type.trim()) { setError('Status Name not entered')} else onAddNewStatus({ type, variant })}}
       >
         Add Status
       </button>
