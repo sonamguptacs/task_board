@@ -34,18 +34,41 @@ export const TaskBoardLayout = () => {
   }
 
   const handleAddNewStatus = ({ type, variant }) => {
-    const statusExist = statusList.find((item) => item.type.toLowerCase() === type.toLowerCase())
-    setDuplicateStatusError(statusExist?'Status already Exist':'')
+    const statusExist = statusList.find(
+      (item) => item.type.toLowerCase() === type.toLowerCase(),
+    )
+    setDuplicateStatusError(statusExist ? 'Status already Exist' : '')
     if (!statusExist) {
       setStatusList([...statusList, { type, variant, taskList: [] }])
       setAddStatus(false)
     }
   }
 
+  const handleTaskDrop = (type, draggedCard) => {
+    const { type: statusType, cardIndex, task } = draggedCard
+    const lists = statusList.map((status) => {
+      let newStatus = { ...status }
+      if (status.type === statusType) {
+        newStatus = {
+          ...newStatus,
+          taskList: [
+            ...newStatus.taskList.filter((_, index) => index !== cardIndex),
+          ],
+        }
+      }
+      if (status.type === type) {
+        newStatus = { ...newStatus, taskList: [...newStatus.taskList, task] }
+      }
+      return { ...newStatus }
+    })
+
+    setStatusList([...lists])
+  }
+
   return (
     <div className="layout">
       <Header onAddNewTask={handleAddTask} onAddNewStatus={handleAddStatus} />
-      <TaskBoard statusList={statusList} />
+      <TaskBoard statusList={statusList} handleDrop={handleTaskDrop} />
       {addTask && (
         <TaskForm
           onCloseAddTask={() => {
