@@ -8,6 +8,7 @@ export const StateColumn = (props) => {
       className="state_column"
       onDragOver={props.handleDragOver}
       onDrop={props.handleDrop}
+      onTouchEnd={props.handleDrop}
     >
       <div className="caption" style={{ color: props.variant }}>
         {props.type}
