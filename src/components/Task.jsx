@@ -6,7 +6,7 @@ export default function Task(props) {
       className="task_card"
       draggable={true}
       onDragStart={props.onDragStart}
-      onTouchMove={props.onDragStart}
+      onTouchStart={props.onDragStart}
     >
       <div className="name">{props.name}</div>
       <div className="description">{props.description}</div>
