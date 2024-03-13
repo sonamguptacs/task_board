@@ -17,6 +17,8 @@ export const StateColumn = (props) => {
         <Task
           {...taskDetails}
           onDragStart={() => props.handleDrag(index, taskDetails)}
+          handleEdit={() => props.handleEdit(index, taskDetails, props.type)}
+          handleDelete={() => props.handleDelete(index, props.type)}
         />
       ))}
     </div>

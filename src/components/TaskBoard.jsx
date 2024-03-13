@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { StateColumn } from './StateColumn'
 
-export default function TaskBoard({ statusList, handleDrop }) {
+export default function TaskBoard({
+  statusList,
+  handleDrop,
+  handleEdit,
+  handleDelete,
+}) {
   const [draggedCard, setDraggedCard] = useState(null)
 
   const handleTaskDrag = (type, cardIndex, task) => {
@@ -21,6 +26,8 @@ export default function TaskBoard({ statusList, handleDrop }) {
             }
             handleDragOver={(event) => event.preventDefault()}
             handleDrop={() => handleDrop(type, draggedCard)}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
           />
         )
       })}

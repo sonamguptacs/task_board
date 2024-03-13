@@ -65,10 +65,28 @@ export const TaskBoardLayout = () => {
     setStatusList([...lists])
   }
 
+  const handleTaskDelete = (index, statusType) => {
+    setStatusList([
+      ...statusList.map((status) => {
+        if (status.type === statusType) {
+          return {
+            ...status,
+            taskList: [...status.taskList.filter((_, idx) => idx !== index)],
+          }
+        }
+        return { ...status }
+      }),
+    ])
+  }
+
   return (
     <div className="layout">
       <Header onAddNewTask={handleAddTask} onAddNewStatus={handleAddStatus} />
-      <TaskBoard statusList={statusList} handleDrop={handleTaskDrop} />
+      <TaskBoard
+        statusList={statusList}
+        handleDrop={handleTaskDrop}
+        handleDelete={handleTaskDelete}
+      />
       {addTask && (
         <TaskForm
           onCloseAddTask={() => {

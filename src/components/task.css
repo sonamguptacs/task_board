@@ -128,6 +128,16 @@
   }
 }
 
+.icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  img {
+    height: 18px;
+    width: 18px;
+  }
+}
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 800px) {
   .layout,
