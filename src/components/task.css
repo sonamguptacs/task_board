@@ -16,10 +16,10 @@
 
 .header {
   padding: 10px;
-  height: 150px;
+  height: 36px;
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   gap: 10px;
   button {
     padding: 10px 20px;
