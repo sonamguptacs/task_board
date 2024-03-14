@@ -70,10 +70,13 @@
 .description {
   height: 50px;
   padding: 5px 0;
+  overflow: auto;
 }
 
 .deadline {
   text-align: right;
+  padding-top: 5px;
+  color: #f61;
 }
 
 .form {
@@ -126,6 +129,11 @@
   .error {
     color: red;
   }
+}
+.task_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .icons {

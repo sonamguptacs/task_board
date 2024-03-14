@@ -11,6 +11,7 @@ export const TaskBoardLayout = () => {
   const [statusList, setStatusList] = useState([
     { type: 'New', variant: 'Blue', taskList: [] },
   ])
+  const [taskDetails, setTaskDetails] = useState(null)
   const [duplicateStatusError, setDuplicateStatusError] = useState('')
   const handleAddTask = () => {
     setAddTask(true)
@@ -21,6 +22,23 @@ export const TaskBoardLayout = () => {
 
   const handleAddNewTask = ({ name, description, deadline, status }) => {
     const list = statusList.map((item) => {
+      if (
+        taskDetails?.isEdit &&
+        taskDetails?.progress.toLowerCase() === status.toLowerCase() &&
+        item.type.toLowerCase() === status.toLowerCase()
+      ) {
+        item.taskList[taskDetails.index] = { name, description, deadline }
+        return { ...item }
+      } else if (
+        taskDetails?.isEdit &&
+        taskDetails?.progress.toLowerCase() !== status.toLowerCase() &&
+        item.type.toLowerCase() === taskDetails?.progress.toLowerCase()
+      ) {
+        return {
+          ...item,
+          taskList: item.taskList.filter((_, idx) => idx !== taskDetails?.index),
+        }
+      }
       if (item.type.toLowerCase() === status.toLowerCase()) {
         return {
           ...item,
@@ -30,6 +48,7 @@ export const TaskBoardLayout = () => {
       return { ...item }
     })
     setStatusList([...list])
+    setTaskDetails(null)
     setAddTask(false)
   }
 
@@ -79,6 +98,18 @@ export const TaskBoardLayout = () => {
     ])
   }
 
+  const handleTaskEdit = (index, taskDetails, statusType) => {
+    setTaskDetails({
+      taskName: taskDetails.name,
+      desc: taskDetails.description,
+      date: taskDetails.deadline,
+      progress: statusType,
+      isEdit: true,
+      index: index,
+    })
+    setAddTask(true)
+  }
+
   return (
     <div className="layout">
       <Header onAddNewTask={handleAddTask} onAddNewStatus={handleAddStatus} />
@@ -86,6 +117,7 @@ export const TaskBoardLayout = () => {
         statusList={statusList}
         handleDrop={handleTaskDrop}
         handleDelete={handleTaskDelete}
+        handleEdit={handleTaskEdit}
       />
       {addTask && (
         <TaskForm
@@ -94,6 +126,7 @@ export const TaskBoardLayout = () => {
           }}
           onAddNewTask={handleAddNewTask}
           statusList={statusList}
+          {...taskDetails}
         />
       )}
       {addStatus && (

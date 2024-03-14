@@ -10,15 +10,17 @@ export default function Task(props) {
       onDragStart={props.onDragStart}
       onTouchStart={props.onDragStart}
     >
-      <div className="icons">
-        <abbr title="edit">
-          <img src={edit} alt="edit" onClick={props.handleEdit} />
-        </abbr>
-        <abbr title="delete" onClick={props.handleDelete}>
-          <img src={Delete} alt="delete" />
-        </abbr>
+      <div className="task_header">
+        <span className="name">{props.name}</span>
+        <div className="icons">
+          <abbr title="edit">
+            <img src={edit} alt="edit" onClick={props.handleEdit} />
+          </abbr>
+          <abbr title="delete" onClick={props.handleDelete}>
+            <img src={Delete} alt="delete" />
+          </abbr>
+        </div>
       </div>
-      <div className="name">{props.name}</div>
       <div className="description">{props.description}</div>
       <div className="deadline">{props.deadline}</div>
     </div>
