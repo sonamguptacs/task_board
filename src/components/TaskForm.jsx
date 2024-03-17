@@ -10,10 +10,10 @@ export const TaskForm = ({
   date,
   progress,
 }) => {
-  const [name, setName] = useState(taskName)
-  const [description, setDescription] = useState(desc)
-  const [deadline, setDeadline] = useState(date)
-  const [status, setStatus] = useState(progress)
+  const [name, setName] = useState(taskName ?? '')
+  const [description, setDescription] = useState(desc ?? '')
+  const [deadline, setDeadline] = useState(date ?? '')
+  const [status, setStatus] = useState(progress ?? '')
   const [error, setError] = useState('')
 
   return (

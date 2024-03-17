@@ -6,6 +6,7 @@ export default function TaskBoard({
   handleDrop,
   handleEdit,
   handleDelete,
+  handleAddToFavourites,
 }) {
   const [draggedCard, setDraggedCard] = useState(null)
 
@@ -28,6 +29,7 @@ export default function TaskBoard({
             handleDrop={() => handleDrop(type, draggedCard)}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
+            handleAddToFavourites={handleAddToFavourites}
           />
         )
       })}

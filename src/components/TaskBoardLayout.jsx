@@ -36,7 +36,9 @@ export const TaskBoardLayout = () => {
       ) {
         return {
           ...item,
-          taskList: item.taskList.filter((_, idx) => idx !== taskDetails?.index),
+          taskList: item.taskList.filter(
+            (_, idx) => idx !== taskDetails?.index,
+          ),
         }
       }
       if (item.type.toLowerCase() === status.toLowerCase()) {
@@ -110,6 +112,27 @@ export const TaskBoardLayout = () => {
     setAddTask(true)
   }
 
+  const handleAddToFavourites = (index, statusType) => {
+    setStatusList([
+      ...statusList.map((status) => {
+        if (status.type === statusType) {
+          return {
+            ...status,
+            taskList: [
+              ...status.taskList.map((task, idx) => {
+                if (idx === index) {
+                  return { ...task, favourite: !task?.favourite }
+                }
+                return { ...task }
+              }),
+            ],
+          }
+        }
+        return { ...status }
+      }),
+    ])
+  }
+
   return (
     <div className="layout">
       <Header onAddNewTask={handleAddTask} onAddNewStatus={handleAddStatus} />
@@ -118,6 +141,7 @@ export const TaskBoardLayout = () => {
         handleDrop={handleTaskDrop}
         handleDelete={handleTaskDelete}
         handleEdit={handleTaskEdit}
+        handleAddToFavourites={handleAddToFavourites}
       />
       {addTask && (
         <TaskForm

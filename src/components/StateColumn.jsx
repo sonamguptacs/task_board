@@ -19,6 +19,9 @@ export const StateColumn = (props) => {
           onDragStart={() => props.handleDrag(index, taskDetails)}
           handleEdit={() => props.handleEdit(index, taskDetails, props.type)}
           handleDelete={() => props.handleDelete(index, props.type)}
+          handleAddToFavourites={() =>
+            props.handleAddToFavourites(index, props.type)
+          }
         />
       ))}
     </div>
