@@ -27,7 +27,12 @@ export const TaskBoardLayout = () => {
         taskDetails?.progress.toLowerCase() === status.toLowerCase() &&
         item.type.toLowerCase() === status.toLowerCase()
       ) {
-        item.taskList[taskDetails.index] = { name, description, deadline }
+        item.taskList[taskDetails.index] = {
+          name,
+          description,
+          deadline,
+          favourite: item.taskList[taskDetails.index]?.favourite,
+        }
         return { ...item }
       } else if (
         taskDetails?.isEdit &&
