@@ -19,8 +19,12 @@
   height: 36px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 10px;
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
   button {
     padding: 10px 20px;
     border-radius: 4px;
@@ -82,7 +86,7 @@
 .form {
   border-radius: 4px;
   position: absolute;
-  background-color: #bcb;
+  background-color: royalblue;
   display: flex;
   flex-direction: column;
   left: 50%;
@@ -144,6 +148,22 @@
   img {
     height: 18px;
     width: 18px;
+  }
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+}
+
+.sort-group {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 24px;
+  > h3 {
+    color: cadetblue;
   }
 }
 /* Responsive layout - makes a one column layout instead of a two-column layout */

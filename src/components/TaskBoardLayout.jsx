@@ -140,7 +140,11 @@ export const TaskBoardLayout = () => {
 
   return (
     <div className="layout">
-      <Header onAddNewTask={handleAddTask} onAddNewStatus={handleAddStatus} />
+      <Header
+        onAddNewTask={handleAddTask}
+        onAddNewStatus={handleAddStatus}
+        statusList={statusList}
+      />
       <TaskBoard
         statusList={statusList}
         handleDrop={handleTaskDrop}
